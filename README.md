@@ -13,7 +13,10 @@
 ## Usage
 
 1. Compile the Program: Compile the source code provided in the 'src/main.cpp' file.
-   You can use a C++ compiler of your choice. I (and any Nix builds within this repository) use `gcc`
+
+   - You can use a C++ compiler of your choice. I (and any Nix builds within this repository) use `gcc`
+
+   - Nix users may invoke `nix build .#dice-sim` to build the package exposed by the `flake.nix`
 
 2. Run the Program: Execute the compiled program in your terminal or command prompt. The program accepts command-line arguments to customize the dice and sequences to be evaluated.
 
@@ -39,3 +42,7 @@ This command will calculate the probabilities for two sequences:
 
 - **Sequence 1**: Rolling '4' on a 6-sided die for 5 consequtive rolls.
 - **Sequence 2**: Rolling '2' on a 6-sided die for 7 consequtive rolls.
+
+## License
+
+This program is licensed under BSD-3-Clause license. See [LICENSE](LICENSE) for more details.
