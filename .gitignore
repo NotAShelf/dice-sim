@@ -1,0 +1,7 @@
+# Ignore g++ artifacts
+*.out
+
+# Ignore tex suite artifacts
+./paper.aux
+./paper.log
+./paper.pdf
