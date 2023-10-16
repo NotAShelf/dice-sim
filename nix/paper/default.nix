@@ -7,15 +7,15 @@ stdenv.mkDerivation {
   pname = "paper";
   version = "0.0.1";
 
-  buildInputs = [
-    texlive.combined.scheme-small.out
+  nativeBuildInputs = [
+    texlive.combined.scheme-full.out
   ];
 
-  src = self;
+  src = self + "/paper";
 
   buildPhase = ''
     runHook preBuild
-    pdflatex paper.tex
+    pdflatex $src/paper.tex
     runHook postBuild
   '';
 
@@ -23,6 +23,7 @@ stdenv.mkDerivation {
     runHook preInstall
     mkdir -p $out
     cp paper.pdf $out
+    cp paper.toc $out
     runHook postInstall
   '';
 }

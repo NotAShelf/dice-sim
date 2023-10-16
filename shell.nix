@@ -6,6 +6,8 @@
   bear,
   libcxx,
   cppcheck,
+  texlive,
+  ...
 }: let
   mainPkg = callPackage ./nix/dice-sim {inherit self;};
 in
@@ -17,6 +19,7 @@ in
         bear # bear.
         libcxx # stdlib for cpp
         cppcheck # static analysis
+        texlive.combined.scheme-full.out # latex
       ]
       ++ (oa.nativeBuildInputs or []);
   })

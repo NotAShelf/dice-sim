@@ -2,6 +2,10 @@
 *.out
 
 # Ignore tex suite artifacts
-./paper.aux
-./paper.log
-./paper.pdf
+# we don't actually publish the pdf over git
+# a separate pipeline will build it
+paper.aux
+paper.log
+paper.pdf
+paper.toc
+texput.log
