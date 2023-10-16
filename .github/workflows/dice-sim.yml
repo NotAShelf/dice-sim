@@ -10,7 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: CHeckout
+    - name: Checkout
       uses: actions/checkout@v3
     
     - name: Install Nix
@@ -22,5 +22,5 @@ jobs:
       uses: DeterminateSystems/magic-nix-cache-action@v2
 
     - name: Build dice-sim
-      run: nix build .#dice-sim -LV
+      run: nix build .#dice-sim -Lv
     
