@@ -1,0 +1,25 @@
+name: LaTeX Paper Build CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@v6
+        with:
+          logger: pretty
+
+      - name: Nix Cache
+        uses: DeterminateSystems/magic-nix-cache-action@v2
+
+      - name: Build paper
+        run: nix build .#paper -Lv
