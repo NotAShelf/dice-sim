@@ -20,6 +20,15 @@ double calculateSequenceProbability(int sides,
   return probability;
 }
 
+// Function to validate the command-line options
+bool validateOptions(int sides, int numRolls1, int numRolls2) {
+  if (sides <= 0 || numRolls1 <= 0 || numRolls2 <= 0) {
+    std::cerr << "Error: Invalid input. Sides and number of rolls must be positive integers." << std::endl;
+    return false;
+  }
+  return true;
+}
+
 int main(int argc, char *argv[]) {
   int sides = 20;    // Default number of sides on the dice (a d20)
   int numRolls1 = 5; // Default number of rolls for sequence 1
@@ -46,6 +55,10 @@ int main(int argc, char *argv[]) {
   if (result.count("help")) {
     std::cout << options.help() << std::endl;
     return 0;
+  }
+
+  if (!validateOptions(sides, numRolls1, numRolls2)) {
+    return 1;
   }
 
   std::vector<int> sequence1(numRolls1, target1);
