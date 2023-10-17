@@ -50,10 +50,11 @@ roll dice as per its Dungeons \& Dragons origin. The idea for the program sprung
 where I managed to land the dice on 19 (when I needed a 20) two times in a row, which piqued my curiosity about the
 mathematical probability of such an event, and eventually lead me to write a program to calculate said possibilities.
 
+
 \section{Probability of Rolling a Specific Number}
 
 The probability of rolling a particular number, denoted as $x$, on a fair $n$-sided die can be calculated
-using a simple, straightforward formula that goes:
+using a simple, straightforward formula that is as follows:
 
 \[
 P(x) = \frac{1}{n}
@@ -64,10 +65,28 @@ Where P(x) & \text{ is the probability of rolling the number } x. \\
 n & \text{ is the number of sides on the die.}
 \end{align*}
 
+However, not all dice are fair. And unfair dice can have biased probabilities, which affect
+the likelihood of specific outcomes. For instance, consider an unfair 6-sided die with the following probabilities:
+
+\[
+\begin{aligned}
+P(1) & = 0.1 \\
+P(2) & = 0.1 \\
+P(3) & = 0.1 \\
+P(4) & = 0.1 \\
+P(5) & = 0.1 \\
+P(6) & = 0.5 \\
+\end{aligned}
+\]
+
+In this case, the probability of rolling '6' is significantly higher than the rest, making it more likely
+compared to the other numbers. The graph below illustrates the compared probabilities of rolling '6' on both a fair and
+an unfair 6-sided die.
+
 \begin{center}
 \begin{tikzpicture}
 \begin{axis}[
-    title={Probability of Rolling a Specific Number on a Fair 6-sided Die},
+    title={Probability of Rolling a Specific Number on Fair and Unfair 6-sided Dice},
     xlabel={Roll Outcome},
     ylabel={Probability},
     ymin=0, ymax=1,
@@ -86,14 +105,24 @@ n & \text{ is the number of sides on the die.}
     coordinates {
     (1,0.1667)(2,0.1667)(3,0.1667)(4,0.1667)(5,0.1667)(6,0.1667)
     };
-\legend{Probability}
+
+\addplot[
+    color=red,
+    mark=triangle,
+    ]
+    coordinates {
+    (1,0.1)(2,0.1)(3,0.1)(4,0.1)(5,0.1)(6,0.5)
+    };
+
+\legend{Fair Die, Unfair Die}
 \end{axis}
 \end{tikzpicture}
 \end{center}
 
-In the graph above, the blue bar represents the probability of rolling a '6' on a fair 6-sided die, which is
-approximately 0.1667. The red bar represents the probability of rolling a '6' on an unfair 6-sided die, which is
-higher at 0.5. This comparison shows how the probabilities can differ for fair and unfair dice.
+
+In the graph, the blue bar represents the probability of rolling a '6' on a fair 6-sided die, which is approximately
+0.1667. The red bar represents the probability of rolling a '6' on an unfair 6-sided die, which is higher at 0.5. This
+comparison demonstrates how the probabilities can differ for fair and unfair dice.
 
 \subsection{Example: Rolling a Specific Number in Dungeons and Dragons}
 
@@ -115,7 +144,7 @@ This means that, on average, a player has a 5\% chance of rolling a natural 20 o
 
 \section{Probability Calculation in the C++ Program}
 
-Now, let's delve into the C++ program that calculates these probabilities. Below is a portion of the C++ code that
+Now, let's delve into the C++ program that calculates these probabilities. Below is a portion of the code that
 illustrates how the probability of a specific sequence is calculated:
 
 \begin{lstlisting}[language=C++, caption=C++ Code for Probability Calculation]
@@ -150,8 +179,8 @@ insights into the likelihood of certain outcomes in tabletop games, and through 
 program, we have demonstrated the practical application of these mathematical concepts. By calculating the
 probabilities of specific sequences of dice rolls, players can make informed decisions and strategize their gameplay.
 
-Decisive conclusion to this paper is that dice rolling is fun, and funny rocks that go click clack make my brain release
-dopamine, and also that math is pretty cool.
+Decisive conclusion to this paper is that dice rolling is fun, and funny rocks that go click clack make my brain
+release dopamine, and also that math is pretty cool.
 
 \subsection{Future Research}
 
